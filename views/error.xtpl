@@ -1,0 +1,7 @@
+{{extend ("./layout/default-layout") }}
+
+{{#block ("content") }}
+    <h1>{{message}}<h1>
+    <p> {{error.status}} <p>
+    <pre>{{error.stack}}</pre>
+{{/block}}

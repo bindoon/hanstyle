@@ -4,15 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var fs = require('fs');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'xtpl');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -22,8 +20,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+function addRouterFromFolder() {
+
+    var folderPath =  path.join(__dirname, 'routes/');                  
+
+    if (fs.existsSync(folderPath)) {
+        try {
+            fs.readdirSync(folderPath).forEach(function(fileName) {
+                var filePath = path.join(folderPath, fileName),
+                    fileStat = fs.statSync(filePath);
+
+                if (fileStat.isDirectory()) {
+                    addRouterFromFolder(filePath);
+                } else if (fileStat.isFile()) {
+                    var requireRouter = require(filePath);
+                    app.use(requireRouter);
+                }
+            });
+        } catch (ex) {
+            console.log(
+                '[router] failed to add router directory: %s, %s', folderPath, ex);
+        }
+    }
+}
+addRouterFromFolder();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
