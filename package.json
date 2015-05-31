@@ -16,6 +16,7 @@
     "mongoose": "^4.0.3",
     "morgan": "^1.5.3",
     "promise": "^7.0.1",
+    "recluster": "^0.4.0",
     "serve-favicon": "~2.2.0",
     "util": "^0.10.3",
     "xtemplate": "^4.2.4",
