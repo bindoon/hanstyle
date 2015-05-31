@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
 
+//var dbaddress = 'hanstyle:whoami@12345@127.0.0.1';
 var dbaddress = '127.0.0.1';
-var dbName = 'hanStyle';
+var dbName = 'hanstyle';
 
 console.error('[mongodb] db address:%s',dbaddress);
 var dbAdress = 'mongodb://'+dbaddress+'/'+dbName;
@@ -11,11 +12,13 @@ var dbAdress = 'mongodb://'+dbaddress+'/'+dbName;
 mongoose.connect(dbAdress);
 var db = mongoose.connection;
 db.on('error', function(err){
-    logger.error('[mongodb] connect to %s error: ',  err.message);
+    console.error('[mongodb] connect to %s error: ',  err.message);
     process.exit(1);
 });
 db.once('open', function () {
-   logger.info('[mongodb] once open');
+   console.info('[mongodb] once open');
 });
 
 require('./mongoScheme');
+
+exports = db;

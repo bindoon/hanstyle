@@ -1,0 +1,12 @@
+{{extend ("./layout/default-layout") }}
+
+{{#block ("content") }}
+    <h1>{{title}}<h1>
+    {{{message}}}
+    <form action="" method="post" >
+        <input name="email" value="bindoon@sina.com" />
+        <input name="nickname" value="frankqian"/>
+        <input name="password"  value="123456" />
+        <input type="submit" />
+    </form>
+{{/block}}
