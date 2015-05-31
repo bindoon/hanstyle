@@ -4,6 +4,7 @@
 
 url: /login
 method: POST
+
 | 参数           | 描述           | 值  |
 | ------------- |:-------------: | -----:|
 | otype        |ajax接口必填           | json  |
@@ -13,6 +14,7 @@ method: POST
 
 url: /register
 method: POST
+
 | 参数           | 描述           | 值  |
 | ------------- |:-------------: | -----:|
 | otype        |ajax接口必填           | json  |
