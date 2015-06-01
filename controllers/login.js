@@ -108,6 +108,8 @@ function login(app,Settings,db) {
         cookie: { maxAge: 600000 },
         secret: Settings.COOKIE_SECRET,
         store: new MongoStore({  
+            resave: false,  
+            saveUninitialized: true,  
             username: Settings.USERNAME,
             password: Settings.PASSWORD,
             url: Settings.URL,
