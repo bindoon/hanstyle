@@ -4,16 +4,6 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var MongoStore = require('connect-mongodb');  
 
-function getOtype (req) {
-    var otype = "";
-    if (req.method.toLowerCase() == 'post') {
-        otype = req.body.otype;
-    } else {
-        otype = req.query.otype;
-    }
-    return otype;
-}
-
 router.route('/login')
 .get(function(req, res) {
     if (req.session&& req.session.error) {
@@ -25,7 +15,8 @@ router.route('/login')
         email: req.body.email,
         passWord : req.body.password
     }
-    var otype = getOtype(req);
+    var otype = req.getParam('otype');
+            console.log(otype);
 
     dataHandle.login(user,function(data){console.log(data);
         if (data.length) {
@@ -119,7 +110,7 @@ function login(app,Settings,db) {
     app.use(router);
 
     app.use(function(req, res, next){
-        var otype = getOtype(req);
+        var otype = req.getParam('otype');
 
         if (!req.session.user) {
             console.log(otype,req.otype);
