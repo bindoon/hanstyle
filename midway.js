@@ -8,20 +8,15 @@ var db = require('./models');
 var fs = require('fs');
 var extend = require('util')._extend;
 
-var Settings = require('./config/base.json').global;
+var config = require('config');
+var Settings = config.global;
+
 var login = require('./controllers/login');
 
 
 
 function midway(app) {
-    if (app.get('env')) {
-        var cfgpath = path.resolve('./config/'+app.get('env')+'.json');
-        if(fs.existsSync(cfgpath)){
-            var envcfg = require(cfgpath);
-            Settings = extend(Settings,envcfg);
-        }
-    };
-
+    
         // view engine setup
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'xtpl');
