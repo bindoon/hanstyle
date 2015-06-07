@@ -39,3 +39,11 @@ exports.check = function (email,cb) {
         cb&&cb(data);
     })
 }
+
+exports.getIndex = function (cb) {
+    co(function* (){
+        return yield dbHelper.query(mongoose.model('indexdata'));
+    }).then(function(data){
+        cb&&cb(data);
+    })
+}

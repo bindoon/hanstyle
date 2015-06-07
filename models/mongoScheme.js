@@ -11,9 +11,33 @@ mongoose.model('user', new Schema({
     modifyTime:Date
 }));
 
+//类别
 mongoose.model('category', new Schema({
-    name:String,//花名
+    id: Number,
+    name:String,
     pic: String,
     createTime:Date,
     modifyTime:Date
 }));
+
+//类别详情
+mongoose.model('categorydetail', new Schema({
+    id: Number,
+    cateId: Number,
+    name:String,
+    pic: String,
+    createTime:Date,
+    modifyTime:Date
+}));
+
+//类别详情
+mongoose.model('indexdata', new Schema({
+    type: Number,
+    title: String,
+    subtitle: String,
+    desc: String,
+    pic: String,
+    createTime:Date,
+    modifyTime:Date
+}));
+

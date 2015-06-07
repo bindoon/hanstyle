@@ -4,19 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 
 var bodyParser = require('body-parser');
-var db = require('./models');
+var config = require('config');
 var fs = require('fs');
 var extend = require('util')._extend;
 
-var config = require('config');
+var db = require('./models');
 var Settings = config.global;
-
 var login = require('./controllers/login');
 
 
-
 function midway(app) {
-    
+
         // view engine setup
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'xtpl');
