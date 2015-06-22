@@ -54,7 +54,7 @@ exports.getIndex = function (cb) {
                 list:second,
                 name:'第二楼层',
             },
-            three:{
+            third:{
                 list:third,
                 name:'第三楼层',
             }

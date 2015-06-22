@@ -58,7 +58,7 @@
     <tbody>
     {{#each (second.list)}}
         <tr>
-          <th scope="row">{{nIndex}}</th>
+          <th scope="row">{{xindex+1}}</th>
           <td>{{title}}</td>
           <td>{{desc}}</td>
           <td>{{pic}}</td>
@@ -81,9 +81,9 @@
           <th>链接</th>
         </tr>
     <tbody>
-    {{#each (three.list)}}
+    {{#each (third.list)}}
         <tr>
-          <th scope="row">{{nIndex}}</th>
+          <th scope="row">{{xindex+1}}</th>
           <td>{{title}}</td>
           <td>{{desc}}</td>
           <td>{{pic}}</td>
@@ -103,7 +103,7 @@
     楼层：    <select name="type">
             <option value=1 >{{first.name}}</option>
             <option value=2 >{{second.name}}</option>
-            <option value=3 >{{three.name}}</option>
+            <option value=3 >{{third.name}}</option>
         </select><br>
     标题：<input name="title" ><br>
     描述：<input name="desc" ><br>
