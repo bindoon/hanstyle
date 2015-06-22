@@ -32,10 +32,13 @@ function midway(app) {
         req.getParam = function (key) {
             return params[key];
         }
+        req.getParamObject = function() {
+            return params;
+        }
       next();
     });
 
-    login(app,Settings,db);
+//    login(app,Settings,db);
 
     function addRouterFromFolder() {
         var folderPath =  path.join(__dirname, 'routes/');                  

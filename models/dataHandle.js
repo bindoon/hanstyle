@@ -42,8 +42,42 @@ exports.check = function (email,cb) {
 
 exports.getIndex = function (cb) {
     co(function* (){
-        return yield dbHelper.query(mongoose.model('indexdata'));
+        var focus =  yield dbHelper.query(mongoose.model('indexdata'),{type:1});
+        var second =  yield dbHelper.query(mongoose.model('indexdata'),{type:2});
+        var third =  yield dbHelper.query(mongoose.model('indexdata'),{type:3});
+        return {
+            first:{
+                list:focus,
+                name:'首页焦点图',
+            },
+            second:{
+                list:second,
+                name:'第二楼层',
+            },
+            three:{
+                list:third,
+                name:'第三楼层',
+            }
+        };
     }).then(function(data){
         cb&&cb(data);
+    })
+}
+
+exports.insertIndex = function (data, cb) {
+    co(function* (){
+        return yield dbHelper.insert(mongoose.model('indexdata'),data);
+    }).then(function(data){
+        cb&&cb(data);
+    })
+}
+
+exports.removeData = function (_id , cb) {
+    var BSON = require('mongodb').BSONPure;
+    var obj_id = BSON.ObjectID.createFromHexString(_id);
+    co(function* (){
+        return yield dbHelper.remove(mongoose.model('indexdata'),{_id:obj_id});
+    }).then(function(){
+        cb&&cb();
     })
 }
