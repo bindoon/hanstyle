@@ -46,17 +46,17 @@ exports.getIndex = function (cb) {
         var second =  yield dbHelper.query(mongoose.model('indexdata'),{type:2});
         var third =  yield dbHelper.query(mongoose.model('indexdata'),{type:3});
         return {
-            first:{
+            banner:{
                 list:focus,
-                name:'首页焦点图',
+                name:'首页banner',
             },
-            second:{
+            entrance:{
                 list:second,
-                name:'第二楼层',
+                name:'首页入口',
             },
-            third:{
+            expert:{
                 list:third,
-                name:'第三楼层',
+                name:'推荐专家',
             }
         };
     }).then(function(data){
