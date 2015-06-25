@@ -54,7 +54,7 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-var dataHandle = require('../models/dataHandle');
+var dataHandle = require('../biz/dataHandle');
 router.route('/register')
 .get(function(req, res, next) {
     res.render('register',{'title': '用户注册'});

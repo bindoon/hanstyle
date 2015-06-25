@@ -27,13 +27,14 @@ mongoose.model('indexdata', new Schema({
 mongoose.model('category', new Schema({
     id: Number,
     name:String,    /* 茶道、花道、*/
+    desc: String,
     pic: String,
     createTime:Date,
     modifyTime:Date
 }));
 
-//名家
-mongoose.model('categoryfamous', new Schema({
+//名家详细介绍
+mongoose.model('expert', new Schema({
     id: Number,
     cateId: Number, /* 分类 关联 category的id*/
     name:String,
@@ -43,10 +44,10 @@ mongoose.model('categoryfamous', new Schema({
     modifyTime:Date
 }));
 
-//名家
-mongoose.model('famousDetail', new Schema({
+//名家相关文章视频
+mongoose.model('artical', new Schema({
     id: Number,
-    cateId: Number, /* 分类 关联 category的id*/
+    cateId: Number, /* 关联 expert */
     name:String,
     desc: String,
     pic: String,

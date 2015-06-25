@@ -1,5 +1,5 @@
 var co = require('co');
-var dbHelper = require('../util/dbHelper');
+var dbHelper = require('../models/dbHelper');
 var mongoose = require('mongoose');
 
 exports.getUserInfo = function (email,cb) {

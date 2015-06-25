@@ -3,7 +3,7 @@ exports.index = function(req, res, next) {
 }
 
 
-var dataHandle = require('../models/dataHandle');
+var dataHandle = require('../biz/dataHandle');
 
 exports.getIndex = function(req, res, next) {
     dataHandle.getIndex(function(data){
