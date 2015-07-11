@@ -64,6 +64,16 @@ exports.getIndex = function (cb) {
     })
 }
 
+exports.getCategory = function (id, cb) {
+    co(function* (){
+        var category =  yield dbHelper.query(mongoose.model('category'),{id:id});
+        return category;
+    }).then(function(data){
+        cb&&cb(data);
+    })
+}
+
+
 exports.insertIndex = function (data, cb) {
     co(function* (){
         return yield dbHelper.insert(mongoose.model('indexdata'),data);

@@ -1,9 +1,17 @@
+var dataHandle = require('../biz/dataHandle');
+
+exports.getCategory = function(req, res, next) {
+    // dataHandle.getCategory(function(data){
+    //     res.send(data);
+    // })
+
+    res.send(
 {
     "result":{
         "main":{
             "name":"茶道",
             "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e9633.jpg",
-            "desc":"      茶道亦被视为一种烹茶饮茶的生活艺术，一种以茶为媒的生活礼仪，一种以茶修身的生活方式。它通过沏茶、赏茶、闻茶、饮茶、增进友谊，美心修德，学习礼法，领略传统美德，是很有益的一种和美仪式。"        }
+            "desc":"      茶道亦被视为一种烹茶饮茶的生活艺术，一种以茶为媒的生活礼仪，一种以茶修身的生活方式。它通过沏茶、赏茶、闻茶、饮茶、增进友谊，美心修德，学习礼法，领略传统美德，是很有益的一种和美仪式。"       
         },
         "banner":[
             {
@@ -97,4 +105,6 @@
             }
         ]
     }
+});
 }
+

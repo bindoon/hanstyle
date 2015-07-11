@@ -10,7 +10,7 @@ var extend = require('util')._extend;
 
 var db = require('./models');
 var Settings = config.global;
-var login = require('./controllers/login');
+// var login = require('./controllers/login');
 
 
 function midway(app) {
@@ -50,7 +50,7 @@ function midway(app) {
                         fileStat = fs.statSync(filePath);
 
                     if (fileStat.isDirectory()) {
-                        addRouterFromFolder(filePath);
+                        addRouterFromFolder(filePath);  
                     } else if (fileStat.isFile()) {
                         var requireRouter = require(filePath);
                         app.use(requireRouter);

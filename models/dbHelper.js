@@ -1,4 +1,3 @@
-
 var dbHelper = {
     query : function(model, conditon) {
         return new Promise(function(resolve, reject) {
