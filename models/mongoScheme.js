@@ -48,8 +48,8 @@ mongoose.model('expert', new Schema({
 mongoose.model('artical', new Schema({
     id: Number,
     cateId: Number, /* 关联 expert */
-    name:String,
-    desc: String,
+    title:String,
+    content: String,
     pic: String,
     createTime:Date,
     modifyTime:Date

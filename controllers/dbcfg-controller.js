@@ -2,7 +2,7 @@ var co = require('co');
 var dbHelper = require('../models/dbHelper');
 var mongoose = require('mongoose');
 var jsonprc = require('../biz/jsonprc')
-
+var BSON = require('bson').BSONPure;
 
 function getKey(kv) {
     var keyMap = {};
@@ -40,7 +40,6 @@ function* insertData(usermodel,list) {
 }
 
 function* updateData(usermodel,list) {
-    var BSON = require('mongodb').BSONPure;
     for (var i = 0; i < list.length; i++) {
         var obj_id = BSON.ObjectID.createFromHexString(list[i]._id);
         yield dbHelper.findOneAndUpdate(usermodel,{_id:obj_id}, list[i], {});
@@ -49,18 +48,14 @@ function* updateData(usermodel,list) {
 }
 
 function* removeData(usermodel,list) {
-    var BSON = require('mongodb').BSONPure;
     for (var i = 0; i < list.length; i++) {
         var obj_id = BSON.ObjectID.createFromHexString(list[i]._id);
-
         yield dbHelper.remove(usermodel,{_id:obj_id});
     };
     return  0;
 }
 
 exports.dbcfg = function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-
     var param = req.getParamObject();
 
     if (!param.table||!param.op) {
