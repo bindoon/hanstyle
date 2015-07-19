@@ -25,7 +25,7 @@ mongoose.model('indexdata', new Schema({
 
 //类别
 mongoose.model('category', new Schema({
-    id: Number,
+    cateId: Number,
     name:String,    /* 茶道、花道、*/
     desc: String,
     pic: String,
@@ -35,7 +35,7 @@ mongoose.model('category', new Schema({
 
 //名家详细介绍
 mongoose.model('expert', new Schema({
-    id: Number,
+    expertId: Number,
     cateId: Number, /* 分类 关联 category的id*/
     name:String,
     desc: String,
@@ -46,11 +46,12 @@ mongoose.model('expert', new Schema({
 
 //名家相关文章视频
 mongoose.model('artical', new Schema({
-    id: Number,
-    cateId: Number, /* 关联 expert */
+    articalId: Number,
+    expertId: Number, /* 关联 expert */
     title:String,
     content: String,
     pic: String,
     createTime:Date,
     modifyTime:Date
 }));
+

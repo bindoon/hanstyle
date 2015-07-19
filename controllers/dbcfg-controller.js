@@ -4,6 +4,16 @@ var mongoose = require('mongoose');
 var jsonprc = require('../biz/jsonprc')
 var BSON = require('bson').BSONPure;
 
+//配置后台字段映射
+mongoose.model('dbcfg', new mongoose.Schema({
+    table: String,
+    column:String,
+    mapname: String,
+    type: String,
+    createTime:Date,
+    modifyTime:Date
+}));
+
 function getKey(kv) {
     var keyMap = {};
     for(var name in kv) {

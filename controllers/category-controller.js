@@ -1,9 +1,19 @@
 var dataHandle = require('../biz/dataHandle');
+var co = require('co');
 
 exports.getCategory = function(req, res, next) {
     // dataHandle.getCategory(function(data){
     //     res.send(data);
     // })
+    var cateid = req.getParam('cateid');
+
+    co(function* (){
+        var mainInfo = yield dataHandle.getCategory(cateid);
+        console.log(mainInfo)
+    }).then(function(data){
+
+    });
+
 
     res.send(
 {

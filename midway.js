@@ -57,10 +57,11 @@ function midway(app) {
                     } else if (fileStat.isFile()) {
                         var requireRouter = require(filePath);
                         app.use(requireRouter);
+                        console.info('[router] %s is attached successfully',filePath);
                     }
                 });
             } catch (ex) {
-                console.log(
+                console.error(
                     '[router] failed to add router directory: %s, %s', folderPath, ex);
             }
         }
