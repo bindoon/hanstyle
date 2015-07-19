@@ -1,9 +1,27 @@
 var dataHandle = require('../biz/dataHandle');
+var co = require('co');
 
 exports.getExpert = function(req, res, next) {
-    // dataHandle.getCategory(function(data){
-    //     res.send(data);
-    // })
+    var expertid = req.getParam('expertid');
+
+
+    co(function* (){
+        var response = {};
+
+        var mainInfo = yield dataHandle.getExpert(expertid);
+        var articals = yield dataHandle.getExpertsByCateId(expertid);
+
+        response.result = {
+            main:mainInfo,
+            articals:articals
+        };
+
+        return response;
+
+    }).then(function(data){
+        res.send(data);
+    });
+    return;
 
     res.send({
     "result":{

@@ -51,6 +51,20 @@ mongoose.model('artical', new Schema({
     title:String,
     content: String,
     pic: String,
+    url: String,
+    createTime:Date,
+    modifyTime:Date
+}));
+
+//名家相关文章视频
+mongoose.model('CGICfg', new Schema({
+    maintype: Number,   /* 1: category 2:expert  */
+    subtype: Number,   /* 1: banner 2:expert  */
+    id: Number, /* 关联  */
+    title:String,
+    desc: String,
+    pic: String,
+    url: String,
     createTime:Date,
     modifyTime:Date
 }));

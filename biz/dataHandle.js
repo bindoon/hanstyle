@@ -64,6 +64,21 @@ exports.getIndex = function (cb) {
     })
 }
 
-exports.getCategory = function* (id) {
-    return yield dbHelper.query(mongoose.model('category'),{id:id});
+exports.getCategory = function* (cateId) {
+    return yield dbHelper.query(mongoose.model('category'),{cateId:cateId});
+}
+exports.getExpert = function* (expertId) {
+    return yield dbHelper.query(mongoose.model('expert'),{expertId:expertId});
+}
+
+exports.getExpertsByCateId = function* (cateId) {
+    return yield dbHelper.query(mongoose.model('expert'),{cateId:cateId});
+}
+
+exports.getArticalByExpertId = function* (expertId) {
+    return yield dbHelper.query(mongoose.model('artical'),{expertId:expertId});
+}
+
+exports.getCGICfg = function* (maintype,subtype,cateId) {
+    return yield dbHelper.query(mongoose.model('CGICfg'),{maintype:maintype,subtype:subtype,id:cateId});
 }

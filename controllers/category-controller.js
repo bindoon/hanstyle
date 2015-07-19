@@ -2,19 +2,29 @@ var dataHandle = require('../biz/dataHandle');
 var co = require('co');
 
 exports.getCategory = function(req, res, next) {
-    // dataHandle.getCategory(function(data){
-    //     res.send(data);
-    // })
+
     var cateid = req.getParam('cateid');
 
-    co(function* (){
-        var mainInfo = yield dataHandle.getCategory(cateid);
-        console.log(mainInfo)
-    }).then(function(data){
 
+    co(function* (){
+        var response = {};
+
+        var mainInfo = yield dataHandle.getCategory(cateid);
+        var experts = yield dataHandle.getExpertsByCateId(cateid);
+        //var articals = yield dataHandle.getArticalByCateId(cateid);
+
+        response.result = {
+            main:mainInfo,
+            expert:experts
+        };
+
+        return response;
+
+    }).then(function(data){
+        res.send(data);
     });
 
-
+    return;
     res.send(
 {
     "result":{
@@ -27,17 +37,17 @@ exports.getCategory = function(req, res, next) {
             {
                 "pic":"http://www.dabaoku.com/sucaidatu/shenghuo/chadao/11046110.jpg",
                 "url":"http://hxd.wenming.cn/tszg/2009-03/11/content_28696.htm",
-                "title":"alt"
+                "title":"茶道"
             },
             {
                 "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e8224.jpg",
                 "url":"http://www.nipic.com/show/5222645.html",
-                "title":"alt"
+                "title":"茶道1"
             },
             {
                 "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e8f2d.jpg",
                 "url":"http://www.douban.com/event/21039992/",
-                "title":"alt"
+                "title":"茶道2"
             }
         ],
         "expert": [
@@ -70,31 +80,21 @@ exports.getCategory = function(req, res, next) {
         ],
         "articals":[
             {
-                
-                "articals":[
-                    {
-                        "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
-                        "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
-                    },
-                    {
-                        "title":"茶道茶具专家浅析:如何使用十四种常见茶具?",
-                        "url":"http://www.sdchaju.com/ask_630.html"
-                    }                    
-                ]
+                "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
+                "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
             },
             {
-                
-                "articals":[
-                    {
-                        "title":"日茶道专家:日本茶道注重为别人着想",
-                        "url":"http://biz.ifeng.com/huanan/detail_2011_11/07/102099_0.shtml"
-                    },
-                    {
-                        "title":"茶艺教程专家谈茶艺与茶道的不同?",
-                        "url":"http://www.douban.com/note/456020053/?type=like"
-                    }                    
-                ]
-            }            
+                "title":"茶道茶具专家浅析:如何使用十四种常见茶具?",
+                "url":"http://www.sdchaju.com/ask_630.html"
+            },
+            {
+                "title":"日茶道专家:日本茶道注重为别人着想",
+                "url":"http://biz.ifeng.com/huanan/detail_2011_11/07/102099_0.shtml"
+            },
+            {
+                "title":"茶艺教程专家谈茶艺与茶道的不同?",
+                "url":"http://www.douban.com/note/456020053/?type=like"
+            }
         ],
         "videos":[
             {
