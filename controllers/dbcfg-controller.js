@@ -9,7 +9,7 @@ mongoose.model('dbcfg', new mongoose.Schema({
     table: String,
     column:String,
     mapname: String,
-    type: String,
+    ctype: String,
     createTime:Date,
     modifyTime:Date
 }));
@@ -21,7 +21,15 @@ function getKey(kv) {
     }
     return keyMap;
 }
-function getColumnKV(kv) {
+
+function getColumnKV(kv,columnMapArr) {
+    for(var i=0; i< columnMapArr.length; i++) {
+        var column = columnMapArr[i].column;
+        if(column in kv) {
+            kv[column].mapname = columnMapArr[i].mapname;
+            kv[column].ctype = columnMapArr[i].ctype;
+        }
+    }
     var key = [];
     for(var name in kv) {
         if (name == '__v' || name == '_id') {
@@ -30,13 +38,12 @@ function getColumnKV(kv) {
         key.push({
             name: name,
             type:kv[name].instance
-        })
+        });
     }
     return key;
 }
 
 var tableMap = getKey(mongoose.modelSchemas);
-
 
 function* queryData(usermodel,condition) {
     return  yield dbHelper.query(usermodel, condition);
@@ -65,6 +72,14 @@ function* removeData(usermodel,list) {
     return  0;
 }
 
+function* getColumnMap(usermodel, tablename) {
+    return yield dbHelper.query(usermodel,{table:tablename});
+}
+
+function* updateColumnMap(usermodel,columnmap) {
+
+}
+
 exports.dbcfg = function(req, res, next) {
     var param = req.getParamObject();
 
@@ -80,7 +95,6 @@ exports.dbcfg = function(req, res, next) {
 
 
     var usermodel = mongoose.model(param.table);
-    var columns = getColumnKV(usermodel.schema.paths);
 
     var respone = {};
 
@@ -90,6 +104,9 @@ exports.dbcfg = function(req, res, next) {
             case 'query':
             {
                 var condition = param.condition? JSON.parse(param.condition):{};
+                var columnMapArr = yield getColumnMap(mongoose.model('dbcfg'),param.table);
+                var columns = getColumnKV(usermodel.schema.paths,columnMapArr);
+
                 respone.result = {
                     columns: columns,
                     condition: condition

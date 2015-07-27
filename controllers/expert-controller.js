@@ -35,33 +35,6 @@ exports.getExpert = function(req, res, next) {
             "pic":"http://c.cnfolimg.com/20140521/83/960056130704238339.jpg",
             "desc":"著名茶文化专家陈文华教授"
         },
-        /*推荐文章*/
-        "articals":[
-            {
-               "articals":[
-                    {
-                        "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
-                        "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
-                    },
-                    {
-                        "title":"茶道茶具专家浅析:如何使用十四种常见茶具?",
-                        "url":"http://www.sdchaju.com/ask_630.html"
-                    }                    
-                ]
-            },
-            {
-                "articals":[
-                    {
-                        "title":"日茶道专家:日本茶道注重为别人着想",
-                        "url":"http://biz.ifeng.com/huanan/detail_2011_11/07/102099_0.shtml"
-                    },
-                    {
-                        "title":"茶艺教程专家谈茶艺与茶道的不同?",
-                        "url":"http://www.douban.com/note/456020053/?type=like"
-                    }                    
-                ]
-            }            
-        ],
         "videos":[
             {
                 "title":"《美丽课堂》第二十一期 小新“日本之道”探寻之旅—茶道",
@@ -79,6 +52,25 @@ exports.getExpert = function(req, res, next) {
                 "duration":123,
                 "date":"2015-5-7"
             }
+        ],
+        /*推荐文章*/
+        "articles":[
+            {
+                "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
+                "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
+            },
+            {
+                "title":"茶道茶具专家浅析:如何使用十四种常见茶具?",
+                "url":"http://www.sdchaju.com/ask_630.html"
+            },                    
+            {
+                "title":"日茶道专家:日本茶道注重为别人着想",
+                "url":"http://biz.ifeng.com/huanan/detail_2011_11/07/102099_0.shtml"
+            },
+            {
+                "title":"茶艺教程专家谈茶艺与茶道的不同?",
+                "url":"http://www.douban.com/note/456020053/?type=like"
+            }                     
         ]
 
     }

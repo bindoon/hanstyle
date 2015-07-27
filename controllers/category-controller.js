@@ -50,35 +50,24 @@ exports.getCategory = function(req, res, next) {
                 "title":"茶道2"
             }
         ],
-        "expert": [
+        "experts": [
             {
                 "pic":"http://img1.imgtn.bdimg.com/it/u=2915743927,1173774972&fm=21&gp=0.jpg",
-                "articals":[
-                    {
-                        "title":"千万顾景舟紫砂引领匡时紫砂专场",
-                        "url":"http://www.zisha360.com/news/show/169114.shtml"
-                    },
-                    {
-                        "title":"茶道专家《锋尚之王》解读茶道品人生",
-                        "url":"http://zixun.hunantv.com/hntv/20101026/791179.html"
-                    }                    
-                ]
+                "title":"千万顾景舟紫砂引领匡时紫砂专场",
+                "desc":"",
+                "date":"2015-3-4",
+                "url":"http://www.zisha360.com/news/show/169114.shtml"
             },
             {
                 "pic":"http://tea.sun0769.com/cdcy/cj/W020110629357554216857.jpg",
-                "articals":[
-                    {
-                        "title":"著名茶文化专家寇丹.-紫砂文化的软肋",
-                        "url":"http://www.zisha360.com/news/show/169116.shtml"
-                    },
-                    {
-                        "title":"专家论“万里茶道上的中俄历史建筑”|茶道|茶文化_凤凰资讯",
-                        "url":"http://news.ifeng.com/a/20141123/42547406_0.shtml"
-                    }                    
-                ]
+                "title":"著名茶文化专家寇丹.-紫砂文化的软肋",
+                "desc":"",
+                "date":"2015-3-3",
+                "url":"http://www.zisha360.com/news/show/169116.shtml"
+                
             }            
         ],
-        "articals":[
+        "articles":[
             {
                 "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
                 "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
@@ -94,24 +83,6 @@ exports.getCategory = function(req, res, next) {
             {
                 "title":"茶艺教程专家谈茶艺与茶道的不同?",
                 "url":"http://www.douban.com/note/456020053/?type=like"
-            }
-        ],
-        "videos":[
-            {
-                "title":"《美丽课堂》第二十一期 小新“日本之道”探寻之旅—茶道",
-                "desc":"茶道 2015",
-                "pic":"http://img3.douban.com/view/event_poster/raw/public/0684f241a776dde.jpg",
-                "url":"http://www.tudou.com/programs/view/l3EJ6WwbAck/",
-                "duration":123,
-                "date":"2015-5-7"
-            },
-            {
-                "title":"茶道艺术",
-                "desc":"茶道 2015",
-                "pic":"http://www.diaosu.cn/UserFiles/2011-11/0921232450665.jpg",
-                "url":"http://v.youku.com/v_show/id_XNDA1OTI0MDAw.html?from=s1.8-1-1.2",
-                "duration":123,
-                "date":"2015-5-7"
             }
         ]
     }
