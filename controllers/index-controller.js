@@ -9,9 +9,8 @@ exports.getIndex = function(req, res, next) {
     // dataHandle.getIndex(function(data){
     //     res.send(data);
     // });
-    
-    res.send('
 
+    res.send(
 {
     "result": {
         "banner": {
@@ -98,7 +97,7 @@ exports.getIndex = function(req, res, next) {
         }
     }
 }
-        ')
+        )
 }
 
 
