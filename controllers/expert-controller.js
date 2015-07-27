@@ -9,11 +9,11 @@ exports.getExpert = function(req, res, next) {
         var response = {};
 
         var mainInfo = yield dataHandle.getExpert(expertid);
-        var articals = yield dataHandle.getExpertsByCateId(expertid);
+        var articles = yield dataHandle.getExpertsByCateId(expertid);
 
         response.result = {
             main:mainInfo,
-            articals:articals
+            article:articles
         };
 
         return response;

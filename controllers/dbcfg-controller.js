@@ -37,7 +37,9 @@ function getColumnKV(kv,columnMapArr) {
         };
         key.push({
             name: name,
-            type:kv[name].instance
+            type:kv[name].instance,
+            mapname: kv[name].mapname||name,
+            ctype:kv[name].ctype
         });
     }
     return key;
@@ -76,8 +78,11 @@ function* getColumnMap(usermodel, tablename) {
     return yield dbHelper.query(usermodel,{table:tablename});
 }
 
-function* updateColumnMap(usermodel,columnmap) {
-
+function* updateColumnMap(tablename, columnlist) {
+    var usermodel = mongoose.model('dbcfg');
+    for(var i =0; i < columnlist.length; i++) {
+        yield dbHelper.findOneAndUpdate(usermodel,{table:tablename,column:columnlist[i].column}, columnlist[i], {upsert:true});
+    }
 }
 
 exports.dbcfg = function(req, res, next) {
@@ -93,11 +98,9 @@ exports.dbcfg = function(req, res, next) {
         return;
     };
 
-
     var usermodel = mongoose.model(param.table);
 
     var respone = {};
-
 
     co(function* (){
         switch(param.op) {
@@ -150,6 +153,17 @@ exports.dbcfg = function(req, res, next) {
                 respone.result = {
                     code: 0,
                     msg: '删除成功'
+                }
+                return respone;
+                break;
+            }
+            case 'dbcfg':
+            {
+                var list = param.list? JSON.parse(param.list):[];
+                yield updateColumnMap(param.table,list);
+                respone.result = {
+                    code: 0,
+                    msg: '配置成功'
                 }
                 return respone;
                 break;

@@ -45,8 +45,8 @@ mongoose.model('expert', new Schema({
 }));
 
 //名家相关文章视频
-mongoose.model('artical', new Schema({
-    articalId: Number,
+mongoose.model('article', new Schema({
+    articleId: Number,
     expertId: Number, /* 关联 expert */
     title:String,
     content: String,

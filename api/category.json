@@ -3,26 +3,26 @@
         "main":{
             "name":"茶道",
             "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e9633.jpg",
-            "desc":"      茶道亦被视为一种烹茶饮茶的生活艺术，一种以茶为媒的生活礼仪，一种以茶修身的生活方式。它通过沏茶、赏茶、闻茶、饮茶、增进友谊，美心修德，学习礼法，领略传统美德，是很有益的一种和美仪式。"        }
+            "desc":"      茶道亦被视为一种烹茶饮茶的生活艺术，一种以茶为媒的生活礼仪，一种以茶修身的生活方式。它通过沏茶、赏茶、闻茶、饮茶、增进友谊，美心修德，学习礼法，领略传统美德，是很有益的一种和美仪式。"
         },
         "banner":[
             {
                 "pic":"http://www.dabaoku.com/sucaidatu/shenghuo/chadao/11046110.jpg",
                 "url":"http://hxd.wenming.cn/tszg/2009-03/11/content_28696.htm",
-                "title":"alt"
+                "title":"茶道"
             },
             {
                 "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e8224.jpg",
                 "url":"http://www.nipic.com/show/5222645.html",
-                "title":"alt"
+                "title":"茶道1"
             },
             {
                 "pic":"http://hxd.wenming.cn/tszg/attachement/jpg/site2/20090311/001d7d753a6a0b214e8f2d.jpg",
                 "url":"http://www.douban.com/event/21039992/",
-                "title":"alt"
+                "title":"茶道2"
             }
         ],
-        "expert": [
+        "experts": [
             {
                 "pic":"http://img1.imgtn.bdimg.com/it/u=2915743927,1173774972&fm=21&gp=0.jpg",
                 "title":"千万顾景舟紫砂引领匡时紫砂专场",
@@ -36,10 +36,10 @@
                 "desc":"",
                 "date":"2015-3-3",
                 "url":"http://www.zisha360.com/news/show/169116.shtml"
-                
-            }            
+
+            }
         ],
-        "articals":[
+        "articles":[
             {
                 "title":"沉痛哀悼著名茶文化专家陈文华教授逝世",
                 "url":"http://haixi.cnfol.com/chaye/20140521/17921785.shtml"
