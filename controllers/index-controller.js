@@ -6,10 +6,10 @@ exports.index = function(req, res, next) {
 var dataHandle = require('../biz/dataHandle');
 
 exports.getIndex = function(req, res, next) {
-    // dataHandle.getIndex(function(data){
-    //     res.send(data);
-    // });
-
+     dataHandle.getIndex(function(data){
+         res.send(data);
+     });
+return;
     res.send(
 {
     "result": {

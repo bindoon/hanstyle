@@ -10,11 +10,13 @@ exports.getCategory = function(req, res, next) {
         var response = {};
 
         var mainInfo = yield dataHandle.getCategory(cateid);
+        var banner = yield  dataHandle.getConfigInfo('cgicfg',{maintype:1,subtype:1,id:cateid});
         var experts = yield dataHandle.getExpertsByCateId(cateid);
         //var articals = yield dataHandle.getArticalByCateId(cateid);
 
         response.result = {
             main:mainInfo,
+            banner:banner,
             expert:experts
         };
 

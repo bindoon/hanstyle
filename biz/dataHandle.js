@@ -80,5 +80,9 @@ exports.getArticalByExpertId = function* (expertId) {
 }
 
 exports.getCGICfg = function* (maintype,subtype,cateId) {
-    return yield dbHelper.query(mongoose.model('CGICfg'),{maintype:maintype,subtype:subtype,id:cateId});
+    return yield dbHelper.query(mongoose.model('cgicfg'),{maintype:maintype,subtype:subtype,id:cateId});
+}
+
+exports.getConfigInfo = function* (modelname,condition) {
+    return yield dbHelper.query(mongoose.model(modelname),condition);
 }
