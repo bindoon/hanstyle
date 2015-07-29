@@ -9,7 +9,18 @@ mongoose.model('dbcfg', new mongoose.Schema({
     table: String,
     column:String,
     mapname: String,
-    ctype: String,
+    ctype: {
+        type:Number,
+        default :1
+    },
+    config: {
+        value:[
+            {
+                k:String,
+                v:String
+            }
+        ]
+    },
     createTime:Date,
     modifyTime:Date
 }));
@@ -28,6 +39,7 @@ function getColumnKV(kv,columnMapArr) {
         if(column in kv) {
             kv[column].mapname = columnMapArr[i].mapname;
             kv[column].ctype = columnMapArr[i].ctype;
+            kv[column].config = columnMapArr[i].config;
         }
     }
     var key = [];
@@ -39,7 +51,8 @@ function getColumnKV(kv,columnMapArr) {
             name: name,
             type:kv[name].instance,
             mapname: kv[name].mapname||name,
-            ctype:kv[name].ctype
+            ctype:kv[name].ctype,
+            config:kv[name].config
         });
     }
     return key;
@@ -81,6 +94,7 @@ function* getColumnMap(usermodel, tablename) {
 function* updateColumnMap(tablename, columnlist) {
     var usermodel = mongoose.model('dbcfg');
     for(var i =0; i < columnlist.length; i++) {
+        columnlist[i].config = columnlist[i].config? JSON.parse(columnlist[i].config):{};
         yield dbHelper.findOneAndUpdate(usermodel,{table:tablename,column:columnlist[i].column}, columnlist[i], {upsert:true});
     }
 }
