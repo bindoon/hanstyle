@@ -15,7 +15,7 @@ exports.getCategory = function(req, res, next) {
         //var articals = yield dataHandle.getArticalByCateId(cateid);
 
         response.result = {
-            main:mainInfo,
+            main:mainInfo[0],
             banner:banner,
             expert:experts
         };

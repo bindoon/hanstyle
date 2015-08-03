@@ -8,11 +8,14 @@ exports.getExpert = function(req, res, next) {
     co(function* (){
         var response = {};
 
-        var mainInfo = yield dataHandle.getExpert(expertid);
-        var articles = yield dataHandle.getExpertsByCateId(expertid);
+        var info = yield dataHandle.getExpert(expertid);
+        var main = yield dataHandle.getCategory(info[0].cateId);
+
+        var articles = [];//yield dataHandle.getExpertsByCateId(expertid);
 
         response.result = {
-            main:mainInfo,
+            main:main[0],
+            info:info[0],
             article:articles
         };
 
