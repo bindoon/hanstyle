@@ -45,7 +45,8 @@ exports.getIndex = function (cb) {
         var focus =  yield dbHelper.query(mongoose.model('indexdata'),{type:1});
         var second =  yield dbHelper.query(mongoose.model('indexdata'),{type:2});
         var third =  yield dbHelper.query(mongoose.model('indexdata'),{type:3});
-        return {
+        var response = {};
+        response.result =  {
             banner:{
                 list:focus,
                 name:'首页banner',
@@ -59,6 +60,7 @@ exports.getIndex = function (cb) {
                 name:'推荐专家',
             }
         };
+        return response;
     }).then(function(data){
         cb&&cb(data);
     })
