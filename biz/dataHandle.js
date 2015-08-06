@@ -77,9 +77,14 @@ exports.getExpertsByCateId = function* (cateId) {
     return yield dbHelper.query(mongoose.model('expert'),{cateId:cateId});
 }
 
-exports.getArticalByExpertId = function* (expertId) {
-    return yield dbHelper.query(mongoose.model('artical'),{expertId:expertId});
+exports.getArticleByExpertId = function* (expertId) {
+    return yield dbHelper.query(mongoose.model('article'),{expertId:expertId});
 }
+
+exports.getArticleById = function* (articleId) {
+    return yield dbHelper.query(mongoose.model('article'),{articleId:articleId});
+}
+
 
 exports.getCGICfg = function* (maintype,subtype,cateId) {
     return yield dbHelper.query(mongoose.model('cgicfg'),{maintype:maintype,subtype:subtype,id:cateId});
