@@ -14,12 +14,10 @@ mongoose.model('dbcfg', new mongoose.Schema({
         default :1
     },
     config: {
-        value:[
-            {
-                k:String,
-                v:String
-            }
-        ]
+        value:[{
+            v:String,
+            n:String
+        }]
     },
     createTime:Date,
     modifyTime:Date
@@ -47,12 +45,32 @@ function getColumnKV(kv,columnMapArr) {
         if (name == '__v' || name == '_id') {
             continue;
         };
+
+        var configValue = [];
+        if (kv[name].config&&kv[name].config.value) {
+            configValue = kv[name].config.value;
+        };
+
+        // var configobj = kv[name].config;
+        // if (kv[name].ctype==2&&configobj.value&&configobj.value.length) {
+        //     for (var i = 0; i < configobj.value.length; i++) {
+        //         var vn = configobj.value[i].split('|');
+        //         if (vn.length===2) {
+        //             configValue.push({
+        //                 v:vn[0],
+        //                 n:vn[1]
+        //             })
+        //         };
+        //     };
+        // };
+
         key.push({
             name: name,
             type:kv[name].instance,
             mapname: kv[name].mapname||name,
             ctype:kv[name].ctype,
-            config:kv[name].config
+            config: kv[name].config? JSON.stringify(kv[name].config):'',
+            configValue: configValue
         });
     }
     return key;
