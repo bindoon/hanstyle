@@ -3,6 +3,18 @@
 <title>{{title}}</title>
 </head>
 <body>
-    {{{content}}}
+    <header>
+        <h2>{{title}}</h2>
+        <div class="row article-meta">
+            <div class="col-md-10">
+                <span class="info" style="background-color:#ddd; padding:2px; margin-right:8px;">茶道</span>
+                <span class="info">2015-08-10</span>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <article style="color:#393939">
+        {{{content}}}
+    </article>
 </body>
 </html>

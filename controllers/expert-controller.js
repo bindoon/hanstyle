@@ -1,5 +1,6 @@
 var dataHandle = require('../biz/dataHandle');
 var co = require('co');
+var jsonprc = require('../biz/jsonprc')
 
 exports.getExpert = function(req, res, next) {
     var expertid = req.getParam('expertid');
@@ -9,6 +10,9 @@ exports.getExpert = function(req, res, next) {
         var response = {};
 
         var info = yield dataHandle.getExpert(expertid);
+        if (!info || !info.length) {
+            return jsonprc.error(-100,'not exist');
+        };
         var main = yield dataHandle.getCategory(info[0].cateId);
 
         var articles = [];//yield dataHandle.getExpertsByCateId(expertid);
