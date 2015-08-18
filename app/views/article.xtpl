@@ -1,24 +1,109 @@
 <!DOCTYPE html>
-<html style="font-size:20px;">
+<html>
 <head>
-<title>{{title}}</title>
-</head>
-<body>
-    <header>
-        <h2>{{title}}</h2>
-        <div class="row article-meta">
-            <div class="col-md-10">
-                <span class="info" style="background-color:#ddd; padding:2px; margin-right:8px;">茶道</span>
-                <span class="info">2015-08-10</span>
-            </div>
-        </div>
-    </header>
-    <hr>
+<title>{{typename}}</title>
 
-    <div class="content">
-        <article style="color:#393939">
-            {{{content}}}
-        </article>
+<style>
+html {
+    font-size: 20px;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+
+@media only screen and (min-width: 360px) {
+    html {
+        font-size:22.5px!important
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    html {
+        font-size:23.44px!important
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    html {
+        font-size:25px!important
+    }
+}
+
+@media only screen and (min-width: 414px) {
+    html {
+        font-size:25.8px!important
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size:30px!important
+    }
+}
+
+@media only screen and (min-width: 568px) {
+    html {
+        font-size:35px!important
+    }
+}
+
+@media only screen and (min-width: 667px) {
+    html {
+        font-size:40px!important
+    }
+}
+
+@media only screen and (min-width: 736px) {
+    html {
+        font-size:45px!important
+    }
+}
+
+body {
+    margin: 0 auto;
+    line-height: 1.5em;
+}
+.page {
+    margin: 30px 30px 40px;
+}
+.content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+h1 {
+    color: #000;
+}
+
+</style>
+</head>
+<body >
+    <div class="page">
+        <header>
+            <h1>{{title}}</h2>
+            <div class="row article-meta">
+                <div class="col-md-10">
+                    <span class="info" style="background-color:#eaeaea; padding:2px; margin-right:8px;">{{typename}}</span>
+                    <span class="info">2015-08-10 00:00:01</span>
+                </div>
+            </div>
+        </header>
+        <hr>
+
+        <div class="content" id="content">
+            {{#if (pic)}}<img src="{{pic}}" width="100%" >{{/if}}
+            <article style="color:#393939">
+                {{{content}}}
+            </article>
+        </div>
+
     </div>
+
+    <script type="text/javascript" src="//g.alicdn.com//sj/lib/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    $('#content img').each(function (argument) {
+        var $this = $(this);
+        $this.attr('width','100%');
+    })
+    </script>
 </body>
 </html>
