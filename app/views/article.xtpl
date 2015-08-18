@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html style="font-size:20px;">
 <head>
 <title>{{title}}</title>
 </head>
@@ -13,8 +14,11 @@
         </div>
     </header>
     <hr>
-    <article style="color:#393939">
-        {{{content}}}
-    </article>
+
+    <div class="content">
+        <article style="color:#393939">
+            {{{content}}}
+        </article>
+    </div>
 </body>
 </html>

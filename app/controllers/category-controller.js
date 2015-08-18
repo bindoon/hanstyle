@@ -12,12 +12,38 @@ exports.getCategory = function(req, res, next) {
         var mainInfo = yield dataHandle.getCategory(cateid);
         var banner = yield  dataHandle.getConfigInfo('cgicfg',{maintype:1,subtype:1,id:cateid});
         var experts = yield dataHandle.getExpertsByCateId(cateid);
-        //var articals = yield dataHandle.getArticalByCateId(cateid);
+        var articles = [];
+        var eidarr = {};
+        for (var i = 0; i < experts.length; i++) {
+            var expertid = experts[i].expertId;
+            eidarr[expertid]=1;
+        }
+
+        for(var expertid in eidarr) {
+            var article = yield  dataHandle.getConfigInfo('article',{expertId:expertid});
+            for (var i = 0; i < article.length; i++) {
+                var articleinfo = {
+                    articleId:article[i].articleId,
+                    expertId:article[i].expertId,
+                    title:article[i].title,
+                    pic:article[i].pic,
+                    url:article[i].url
+                };
+                articles.push(articleinfo);
+                if (articles.length>10) {
+                    break;
+                };
+            }
+            if (articles.length>10) {
+                break;
+            };
+        };
 
         response.result = {
             main:mainInfo[0],
             banner:banner,
-            expert:experts
+            expert:experts,
+            articles:articles
         };
 
         return response;

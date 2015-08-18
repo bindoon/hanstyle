@@ -8,7 +8,7 @@ var config = require('config');
 var fs = require('fs');
 var extend = require('util')._extend;
 
-var db = require('./models');
+var db = require('./app/models');
 var Settings = config.global;
 // var login = require('./controllers/login');
 
@@ -16,7 +16,7 @@ var Settings = config.global;
 function midway(app) {
 
         // view engine setup
-    app.set('views', path.join(__dirname, 'views'));
+    app.set('views', path.join(__dirname, 'app/views'));
     app.set('view engine', 'xtpl');
 
     // uncomment after placing your favicon in /public
@@ -24,7 +24,7 @@ function midway(app) {
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(__dirname, 'app/public')));
 
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -44,7 +44,7 @@ function midway(app) {
 //    login(app,Settings,db);
 
     function addRouterFromFolder() {
-        var folderPath =  path.join(__dirname, 'routes/');                  
+        var folderPath =  path.join(__dirname, 'app/routes/');                  
 
         if (fs.existsSync(folderPath)) {
             try {

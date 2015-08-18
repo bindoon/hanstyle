@@ -15,12 +15,12 @@ exports.getExpert = function(req, res, next) {
         };
         var main = yield dataHandle.getCategory(info[0].cateId);
 
-        var articles = [];//yield dataHandle.getExpertsByCateId(expertid);
+        var articles = yield  dataHandle.getConfigInfo('article',{expertId:expertid});
 
         response.result = {
             main:main[0],
             info:info[0],
-            article:articles
+            articles:articles
         };
 
         return response;
