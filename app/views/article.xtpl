@@ -97,6 +97,13 @@ h1 {
             </article>
         </div>
 
+        <hr>
+
+        <footer>
+           <p style="font-size:0.7rem;color: #666;">【关注“汉时代”微信一日三餐无烦恼。<br>微信号：<span style="color:#ef635b">Hanstyle520</span>】(长按复制)</p>
+
+        </footer>
+
     </div>
 
     <script type="text/javascript" src="//g.alicdn.com//sj/lib/jquery/dist/jquery.min.js" charset="utf-8"></script>
