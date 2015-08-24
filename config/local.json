@@ -6,7 +6,10 @@
         "URL": "mongodb://121.41.83.170:27017/hanstyle",
         "COOKIE_SECRET" : "hanstyle", 
         "USERNAME": "",
-        "PASSWORD": ""
+        "PASSWORD": "",
+        "uploaddir" : "/root/www/imagesupload",
+                "env":"local"
+
     },
     "logger" : {
         "stderr"      : false,

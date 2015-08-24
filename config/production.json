@@ -5,7 +5,9 @@
         "URL": "mongodb://127.0.0.1:27017/hanstyle",
         "COOKIE_SECRET" : "hanstyle", 
         "USERNAME": "",
-        "PASSWORD": ""
+        "PASSWORD": "",
+                        "env":"production"
+
     },
     "logger" : {
         "stderr"      : false,
