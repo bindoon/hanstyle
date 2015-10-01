@@ -1,7 +1,17 @@
 var dbHelper = {
-    query : function(model, conditon) {
+    query : function(model, conditon,options) {
         return new Promise(function(resolve, reject) {
-            model.find(conditon,function(error, data) {
+            options = options||{};
+            model.find(conditon, {}, options, function(error, data) {
+                if (error)
+                    reject(error);
+                resolve(data);
+            })
+        })
+    },
+    querylimit : function(model, conditon) {
+        return new Promise(function(resolve, reject) {
+            model.find(conditon).skip(20).limit(20).toArray( function(error, data) {
                 if (error)
                     reject(error);
                 resolve(data);

@@ -78,8 +78,8 @@ function getColumnKV(kv,columnMapArr) {
 
 var tableMap = getKey(mongoose.modelSchemas);
 
-function* queryData(usermodel,condition) {
-    return  yield dbHelper.query(usermodel, condition);
+function* queryData(usermodel,condition, options) {
+    return  yield dbHelper.query(usermodel, condition, options);
 }
 
 function* insertData(usermodel,list) {
@@ -139,15 +139,25 @@ exports.dbcfg = function(req, res, next) {
             case 'query':
             {
                 var condition = param.condition? JSON.parse(param.condition):{};
+                var pagination = param.pagination? JSON.parse(param.pagination):{};
                 var columnMapArr = yield getColumnMap(mongoose.model('dbcfg'),param.table);
                 var columns = getColumnKV(usermodel.schema.paths,columnMapArr);
 
                 respone.result = {
                     columns: columns,
-                    condition: condition
+                    condition: condition,
+                    pagination: pagination
                 }
 
-                var data =  yield queryData(usermodel,condition);
+                var tdata =  yield queryData(usermodel,condition);
+                pagination.totalItems = tdata.length;
+                pagination.totalPage = parseInt((tdata.length+20)/20);
+                pagination.itemsPerPage = 20;
+
+
+                //var data = yield queryData(usermodel,condition,{skip:(pagination.currentPage-1)*20,limit:20});
+                var data = tdata.slice((pagination.currentPage-1)*20,(pagination.currentPage-1)*20+20);
+
                 if (data.length >= 0) {
                     respone.result.list = data;
                     return respone;
